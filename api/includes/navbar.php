@@ -10,20 +10,20 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>navbar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     
     <nav>
         <div class="logo-site">
-            <img src="/gilbert/assets/images/logo.png" alt="logo du site">
+            <img src="/assets/images/logo.png" alt="logo du site">
         </div>
         <div class="navbar-content">
             <ul class="navbar-ul">
                 <li class="navbar-li"><a href="/index.php">Accueil</a></li>
-                <li class="navbar-li"><a href="/about.php">A Propos</a></li>
-                <li class="navbar-li"><a href="/pages/service.php">Services</a></li>
-                <li class="navbar-li"><a href="/pages/contact.php">Contact</a></li>
+                <li class="navbar-li"><a href="../api/about.php">A Propos</a></li>
+                <li class="navbar-li"><a href="../api/pages/service.php">Services</a></li>
+                <li class="navbar-li"><a href="../api/pages/contact.php">Contact</a></li>
             </ul>
         </div>
         <div class="navbar-content">
