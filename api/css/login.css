@@ -1,0 +1,276 @@
+.login-content {
+    min-height: calc(100vh - 200px); /* Ajuste la hauteur en fonction du header/footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(145, 223, 221, 0.1) 0%, rgba(2, 119, 125, 0.1) 100%);
+}
+
+/* Formulaire de connexion */
+.login-content form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(2, 119, 125, 0.1);
+}
+
+.login-content form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(2, 119, 125, 0.2);
+}
+
+/* Groupes d'input */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(145, 223, 221, 0.2);
+}
+
+.input-group input:hover {
+    border-color: var(--secondary-color);
+}
+
+/* Animation du label quand l'input est focus */
+.input-group:focus-within label {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* Bouton de connexion */
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(2, 119, 125, 0.4);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.login-btn:hover::before {
+    left: 100%;
+}
+
+/* Lien d'inscription */
+.login-content p {
+    margin-top: 25px;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.login-content p a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.login-content p a:hover {
+    color: var(--primary-color);
+}
+
+/* Effet de soulignement animé pour le lien */
+.login-content p a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+.login-content p a:hover::after {
+    width: 100%;
+}
+
+/* Options supplémentaires (optionnel) */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: auto;
+    accent-color: var(--secondary-color);
+}
+
+.forgot-password {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Messages d'erreur/succès */
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid #c62828;
+    animation: shake 0.5s ease;
+}
+
+.success-message {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid #2e7d32;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .login-content {
+        padding: 20px;
+    }
+    
+    .login-content form {
+        padding: 30px 20px;
+    }
+    
+    .input-group input {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    
+    .login-btn {
+        padding: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .login-content form {
+        padding: 25px 15px;
+    }
+    
+    .login-options {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .input-group label {
+        font-size: 0.9em;
+    }
+}
+
+
+/* Animation d'apparition du formulaire */
+.login-content form {
+    animation: slideUpFade 0.6s ease;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style pour l'icône dans l'input (optionnel) */
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+    font-size: 18px;
+}
+
+.input-with-icon input {
+    padding-left: 45px;
+}

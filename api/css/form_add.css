@@ -1,0 +1,408 @@
+/* style de la page d'ajout de produit */
+
+body {
+    background: linear-gradient(135deg, rgba(145, 223, 221, 0.1) 0%, rgba(2, 119, 125, 0.1) 100%);
+    min-height: 100vh;
+}
+
+.form_add_content {
+    margin-left: 250px;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.form_add_content form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(2, 119, 125, 0.1);
+}
+
+.form_add_content form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(2, 119, 125, 0.2);
+}
+
+.form_add_content h1 {
+    color: var(--secondary-color);
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    margin-left: 1rem;
+}
+
+.form_add_content h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Message de notification */
+.message {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    animation: shake 0.5s ease;
+}
+
+.message.success {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border-left: 4px solid #2e7d32;
+}
+
+.message.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #c62828;
+}
+
+/* Groupes de formulaire */
+.form-add {
+    margin-bottom: 25px;
+}
+
+.form-add label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.form-add .required {
+    color: #dc3545;
+    margin-left: 5px;
+}
+
+.form-add input[type="text"],
+.form-add input[type="number"],
+.form-add textarea,
+.form-add select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.form-add input[type="text"]:focus,
+.form-add input[type="number"]:focus,
+.form-add textarea:focus,
+.form-add select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(145, 223, 221, 0.2);
+}
+
+.form-add input[type="text"]:hover,
+.form-add input[type="number"]:hover,
+.form-add textarea:hover,
+.form-add select:hover {
+    border-color: var(--secondary-color);
+}
+
+.form-add textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Animation du label */
+.form-add:focus-within label {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* Style pour le select */
+.form-add select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2302777d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+
+/* Gestion du fichier */
+.file-input-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.file-input-wrapper input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.file-input-button {
+    padding: 12px 20px;
+    background: var(--background-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.file-input-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(2, 119, 125, 0.4);
+}
+
+.file-input-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.file-input-button:hover::before {
+    left: 100%;
+}
+
+.allowed-formats {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* Info fichier */
+.file-info {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.file-info.show {
+    display: block;
+    animation: slideInfo 0.3s ease;
+}
+
+@keyframes slideInfo {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aperçu image */
+.image-preview {
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.image-preview.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.image-preview img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+/* Bouton de soumission */
+.form_add_content button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.form_add_content button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(2, 119, 125, 0.4);
+}
+
+.form_add_content button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.form_add_content button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.form_add_content button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+/* Lien retour */
+.back-link {
+    display: inline-block;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+    background-color: var(--white-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+    transform: translateX(-5px);
+}
+
+.back-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+.back-link:hover::after {
+    width: 100%;
+}
+
+/* Animation d'apparition du formulaire */
+.form_add_content form {
+    animation: slideUpFade 0.6s ease;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input hint */
+.input-hint {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .form_add_content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .form_add_content form {
+        padding: 30px 20px;
+    }
+    
+    .form_add_content h1 {
+        font-size: 2em;
+    }
+    
+    .form-add input[type="text"],
+    .form-add input[type="number"],
+    .form-add textarea,
+    .form-add select {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form_add_content form {
+        padding: 25px 15px;
+    }
+    
+    .form_add_content h1 {
+        font-size: 1.8em;
+    }
+    
+    .form-add label {
+        font-size: 0.9em;
+    }
+    
+    .file-input-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+.h-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}

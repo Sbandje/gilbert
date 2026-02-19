@@ -1,0 +1,465 @@
+/* style de la page gestion des commandes admin */
+
+.commandes-container {
+    margin-left: 250px;
+    padding: 30px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(145, 223, 221, 0.05) 0%, rgba(2, 119, 125, 0.05) 100%);
+}
+
+/* En-tête */
+.commandes-header {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.commandes-header h1 {
+    color: var(--secondary-color);
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.commandes-header h1 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.commandes-header p {
+    color: var(--text-color);
+    font-size: 1.1em;
+    opacity: 0.8;
+}
+
+/* Message de notification */
+.message {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    animation: slideDown 0.5s ease;
+}
+
+.message.success {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border-left: 4px solid #2e7d32;
+}
+
+.message.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #c62828;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grille des statistiques */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(2, 119, 125, 0.2);
+}
+
+.stat-card i {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.stat-card.en-attente i { color: #f39c12; }
+.stat-card.confirmee i { color: #27ae60; }
+.stat-card.terminee i { color: #2ecc71; }
+.stat-card.annulee i { color: #e74c3c; }
+
+.stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--text-color);
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Tableau des commandes */
+.commandes-table {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.commandes-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.commandes-table thead tr {
+    background: var(--background-color);
+    color: white;
+}
+
+.commandes-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.commandes-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: var(--text-color);
+}
+
+.commandes-table tbody tr:hover {
+    background-color: rgba(145, 223, 221, 0.1);
+    transition: background 0.3s ease;
+}
+
+/* Badge de statut */
+.statut-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.statut-en_attente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.statut-confirmee {
+    background: #d4edda;
+    color: #155724;
+}
+
+.statut-preparation {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.statut-terminee {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.statut-annulee {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Bouton détails */
+.details-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.details-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(2, 119, 125, 0.3);
+}
+
+.details-btn i {
+    font-size: 0.9em;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideModal 0.3s ease;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+@keyframes slideModal {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--error-color);
+}
+
+.modal h2 {
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.modal h3 {
+    color: var(--secondary-color);
+    margin: 25px 0 15px;
+}
+
+/* Formulaire dans modal */
+.update-status-form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.statut-select {
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-size: 14px;
+    min-width: 150px;
+}
+
+.statut-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Tableau des articles dans modal */
+.modal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.modal table thead tr {
+    background: linear-gradient(135deg, var(--secondary-color), var(--background-color));
+    color: white;
+}
+
+.modal table th {
+    padding: 12px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+.modal table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal table tbody tr:hover {
+    background-color: rgba(145, 223, 221, 0.1);
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .commandes-container {
+        margin-left: 200px;
+        padding: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .commandes-container {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .commandes-header {
+        padding: 25px;
+    }
+
+    .commandes-header h1 {
+        font-size: 1.8em;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-card i {
+        font-size: 2em;
+    }
+
+    .stat-number {
+        font-size: 1.8em;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin: 10% auto;
+    }
+
+    .statut-select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .modal .details-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .commandes-container {
+        padding: 15px;
+    }
+
+    .commandes-header {
+        padding: 20px;
+    }
+
+    .commandes-header h1 {
+        font-size: 1.5em;
+    }
+
+    .commandes-header p {
+        font-size: 1em;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .commandes-table td,
+    .commandes-table th {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .details-btn {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal h2 {
+        font-size: 1.3em;
+    }
+
+    .modal table th,
+    .modal table td {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+}
+
+/* Animation de chargement */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Scrollbar personnalisée pour le modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}

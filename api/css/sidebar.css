@@ -1,0 +1,311 @@
+/* ===== SIDEBAR ADMIN ===== */
+
+:root {
+    --primary-color: #91dfdd;
+    --secondary-color: #02777d;
+    --background-color: #639e90;
+    --text-color: #282929;
+    --white-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;
+}
+
+/* Sidebar principal */
+.sidebar_admin {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--background-color) 100%);
+    color: var(--white-color);
+    padding: 30px 20px;
+    box-shadow: 5px 0 25px rgba(2, 119, 125, 0.3);
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    animation: slideInLeft 0.5s ease;
+}
+
+/* Animation d'apparition */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Titre du sidebar */
+.sidebar_admin h2 {
+    color: var(--white-color);
+    font-size: 1.8em;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--primary-color);
+    text-align: center;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.sidebar_admin h2::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Liste des liens */
+.sidebar_admin ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar_admin ul li {
+    margin-bottom: 15px;
+    animation: fadeInRight 0.5s ease forwards;
+    opacity: 0;
+}
+
+.sidebar_admin ul li:nth-child(1) { animation-delay: 0.1s; }
+.sidebar_admin ul li:nth-child(2) { animation-delay: 0.2s; }
+.sidebar_admin ul li:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Liens */
+.sidebar_admin ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de survol */
+.sidebar_admin ul li a:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(145, 223, 221, 0.4);
+    border-color: var(--primary-color);
+}
+
+/* Effet de brillance */
+.sidebar_admin ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.sidebar_admin ul li a:hover::before {
+    left: 100%;
+}
+
+/* Icônes pour les liens (optionnel) */
+.sidebar_admin ul li a i {
+    margin-right: 12px;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.sidebar_admin ul li a:hover i {
+    transform: scale(1.2);
+}
+
+/* Lien actif */
+.sidebar_admin ul li a.active {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(145, 223, 221, 0.3);
+}
+
+/* Scrollbar personnalisée */
+.sidebar_admin::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar_admin::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.sidebar_admin::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar_admin::-webkit-scrollbar-thumb:hover {
+    background: var(--white-color);
+}
+
+/* Pied de page du sidebar (optionnel) */
+.sidebar-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    right: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white-color);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-footer a:hover {
+    background: #dc3545;
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .sidebar_admin {
+        width: 240px;
+        padding: 25px 15px;
+    }
+
+    .sidebar_admin h2 {
+        font-size: 1.6em;
+        margin-bottom: 30px;
+    }
+
+    .sidebar_admin ul li a {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar_admin {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+
+    .sidebar_admin.active {
+        transform: translateX(0);
+    }
+
+    /* Bouton menu mobile */
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+        background: var(--secondary-color);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.2em;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar_admin {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .sidebar_admin h2 {
+        font-size: 1.4em;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+    }
+
+    .sidebar_admin ul li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar_admin ul li a {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+}
+
+/* Overlay pour mobile */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(3px);
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Animation pour le contenu principal */
+.main-content {
+    margin-left: 280px;
+    transition: margin-left 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+    .main-content {
+        margin-left: 240px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+}

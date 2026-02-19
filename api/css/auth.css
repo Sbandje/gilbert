@@ -1,0 +1,411 @@
+/* page d'inscription */
+
+/* Fond de la page */
+body {
+    background: linear-gradient(135deg, rgba(145, 223, 221, 0.2) 0%, rgba(2, 119, 125, 0.2) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Conteneur principal */
+.register-cont {
+    background: white;
+    max-width: 450px;
+    width: 100%;
+    padding: 50px 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(2, 119, 125, 0.2);
+    animation: slideUpFade 0.6s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de fond décoratif */
+.register-cont::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.register-cont::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    border-radius: 50%;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* Titre */
+.register-cont h2 {
+    color: var(--secondary-color);
+    font-size: 2.2em;
+    margin-bottom: 35px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.register-cont h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Formulaire */
+.register-cont form {
+    position: relative;
+    z-index: 1;
+}
+
+/* Groupes d'input */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(145, 223, 221, 0.2);
+}
+
+.input-group input:hover {
+    border-color: var(--secondary-color);
+}
+
+/* Animation du label quand l'input est focus */
+.input-group:focus-within label {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* Bouton d'inscription */
+.register-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.register-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(2, 119, 125, 0.4);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+}
+
+/* Effet de brillance sur le bouton */
+.register-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.register-btn:hover::before {
+    left: 100%;
+}
+
+/* Lien vers la connexion */
+.register-cont p {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.register-cont p a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.register-cont p a:hover {
+    color: var(--primary-color);
+}
+
+/* Effet de soulignement animé pour le lien */
+.register-cont p a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+.register-cont p a:hover::after {
+    width: 100%;
+}
+
+/* Animation d'apparition */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Messages d'erreur/succès */
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid #c62828;
+    animation: shake 0.5s ease;
+}
+
+.success-message {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid #2e7d32;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Force du mot de passe (optionnel) */
+.password-strength {
+    margin-top: 8px;
+    height: 5px;
+    border-radius: 5px;
+    background: #e0e0e0;
+    overflow: hidden;
+}
+
+.password-strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.password-strength-bar.weak {
+    width: 33.33%;
+    background: #dc3545;
+}
+
+.password-strength-bar.medium {
+    width: 66.66%;
+    background: #ffc107;
+}
+
+.password-strength-bar.strong {
+    width: 100%;
+    background: #28a745;
+}
+
+.password-hint {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .register-cont {
+        padding: 40px 30px;
+    }
+
+    .register-cont h2 {
+        font-size: 2em;
+    }
+
+    .input-group input {
+        padding: 12px 15px;
+    }
+
+    .register-btn {
+        padding: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .register-cont {
+        padding: 30px 20px;
+    }
+
+    .register-cont h2 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    .register-cont h2::after {
+        width: 50px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .input-group label {
+        font-size: 0.9em;
+    }
+
+    .input-group input {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+
+    .register-btn {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .register-cont p {
+        font-size: 14px;
+    }
+}
+
+/* Style pour les champs requis */
+.input-group input:required {
+    border-color: #ffc107;
+}
+
+.input-group input:required:valid {
+    border-color: #28a745;
+}
+
+.input-group input:required:focus:invalid {
+    border-color: #dc3545;
+}
+
+/* Style pour le séparateur (optionnel) */
+.register-divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.register-divider::before,
+.register-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.register-divider::before {
+    left: 0;
+}
+
+.register-divider::after {
+    right: 0;
+}
+
+.register-divider span {
+    background-color: white;
+    padding: 0 15px;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* Animation de chargement */
+.register-btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.register-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 3px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}

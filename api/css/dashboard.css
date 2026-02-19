@@ -1,0 +1,379 @@
+/* ===== TABLEAU DE BORD ADMIN ===== */
+
+/* Structure principale */
+.dashboard-act {
+    margin-left: 250px; /* Espace pour le sidebar */
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(145, 223, 221, 0.05) 0%, rgba(2, 119, 125, 0.05) 100%);
+    min-height: 100vh;
+}
+
+/* En-tête du tableau de bord */
+.head-dash {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.5s ease;
+}
+
+.head-dash h1 {
+    color: var(--secondary-color);
+    font-size: 2.2em;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.head-dash h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 10px 0 0;
+    border-radius: 2px;
+}
+
+/* Section activités récentes */
+.act-recent {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease 0.2s both;
+}
+
+/* En-tête de la grille */
+.entete-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.entete-grid h2 {
+    color: var(--secondary-color);
+    font-size: 1.8em;
+    margin: 0;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.entete-grid h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* Bouton d'ajout */
+.btn-ajout {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(2, 119, 125, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ajout:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(2, 119, 125, 0.4);
+}
+
+.btn-ajout::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-ajout:hover::before {
+    left: 100%;
+}
+
+/* Grille des activités */
+.grid-act {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* Cartes d'activités */
+.act-item {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(2, 119, 125, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInScale 0.5s ease forwards;
+    opacity: 0;
+}
+
+.act-item:nth-child(1) { animation-delay: 0.3s; }
+.act-item:nth-child(2) { animation-delay: 0.4s; }
+.act-item:nth-child(3) { animation-delay: 0.5s; }
+
+.act-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(2, 119, 125, 0.15);
+    border-color: var(--primary-color);
+}
+
+/* Effet de fond décoratif */
+.act-item::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    opacity: 0.1;
+    transition: all 0.5s ease;
+}
+
+.act-item:hover::before {
+    transform: scale(1.5);
+    opacity: 0.15;
+}
+
+.act-item h3 {
+    color: var(--secondary-color);
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.act-item p {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .dashboard-act {
+        margin-left: 200px;
+        padding: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-act {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .head-dash {
+        padding: 25px;
+    }
+
+    .head-dash h1 {
+        font-size: 2em;
+    }
+
+    .entete-grid {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .entete-grid h2 {
+        font-size: 1.6em;
+    }
+
+    .btn-ajout {
+        width: 100%;
+        text-align: center;
+    }
+
+    .grid-act {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .act-item {
+        padding: 25px;
+    }
+
+    .act-item h3 {
+        font-size: 1.2em;
+    }
+
+    .act-item p {
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dashboard-act {
+        padding: 15px;
+    }
+
+    .head-dash {
+        padding: 20px;
+    }
+
+    .head-dash h1 {
+        font-size: 1.8em;
+    }
+
+    .act-recent {
+        padding: 20px;
+    }
+
+    .entete-grid h2 {
+        font-size: 1.4em;
+    }
+
+    .grid-act {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .act-item {
+        padding: 20px;
+    }
+
+    .act-item h3 {
+        font-size: 1.1em;
+    }
+
+    .act-item p {
+        font-size: 1.8em;
+    }
+
+    .btn-ajout {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+}
+
+/* Style pour le sidebar (à ajouter dans votre fichier sidebar) */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--secondary-color), var(--background-color));
+    color: white;
+    padding: 30px 20px;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+/* Icônes pour les cartes (optionnel) */
+.act-item i {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.act-item:hover i {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Badge de notification (optionnel) */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #dc3545;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Loading spinner (optionnel) */
+.loading-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(2, 119, 125, 0.3);
+    border-top-color: var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
