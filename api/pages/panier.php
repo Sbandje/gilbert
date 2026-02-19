@@ -7,8 +7,8 @@ require_once __DIR__ . '/../includes/panier_fonctions.php';
 <head>
     <meta charset="UTF-8">
     <title>Mon Panier</title>
-    <link rel="stylesheet" href="/gilbert/css/style.css">
-    <link rel="stylesheet" href="/gilbert/css/panier.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/panier.css">
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>

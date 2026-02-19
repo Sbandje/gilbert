@@ -51,8 +51,8 @@ $commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Gestion des commandes - Admin</title>
-    <link rel="stylesheet" href="/gilbert/css/style.css">
-    <link rel="stylesheet" href="/gilbert/css/pages.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
 </head>
 <body>
     <?php include '../includes/navbar.php'; ?>
