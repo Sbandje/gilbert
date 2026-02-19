@@ -1,3 +1,4 @@
+<?php include 'includes/navbar.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +10,6 @@
 
 </head>
 <body>
-    <?php include 'includes/navbar.php'; ?>
-
     <div class="accueil-content">
         <div class="header-cont">
             <h1>Bienvenue sur notre site de vente en ligne</h1>
